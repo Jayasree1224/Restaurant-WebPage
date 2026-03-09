@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Foodie Restaurant</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+nav{
+background:black;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+}
+
+.logo{
+font-size:22px;
+}
+
+.menu{
+display:flex;
+list-style:none;
+}
+
+.menu li{
+margin-left:20px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+.menu a:hover{
+color:orange;
+}
+
+
+.menu-btn{
+font-size:28px;
+cursor:pointer;
+display:none;
+}
+
+
+.hero{
+background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+background-size:cover;
+background-position:center;
+height:60vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.section{
+padding:40px;
+text-align:center;
+}
+
+.food-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.food{
+    width:250px;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    text-align:center;
+}
+.food img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+button{
+margin-top:10px;
+padding:8px 15px;
+border:none;
+background:orange;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+
+@media(max-width:768px){
+
+.menu{
+display:none;
+flex-direction:column;
+background:black;
+position:absolute;
+top:60px;
+right:0;
+width:200px;
+text-align:center;
+}
+
+.menu li{
+margin:15px 0;
+}
+
+.menu-btn{
+display:block;
+}
+
+.show{
+display:flex;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<nav>
+
+<div class="logo">Foodie</div>
+
+<ul class="menu" id="menu">
+<li><a href="#">Home</a></li>
+<li><a href="#">Menu</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+
+<div class="hero">
+<h1>Welcome to Foodie Restaurant</h1>
+<p id="status"></p>
+</div>
+
+<div class="section">
+
+<h2>Our Menu</h2>
+
+<div class="food-container">
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
+<h3>Pizza</h3>
+<p>200</p>
+<button onclick="order('Pizza')">Order</button>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<h3>Burger</h3>
+<p>250</p>
+<button onclick="order('Burger')">Order</button>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601">
+<h3>Pasta</h3>
+<p>299</p>
+<button onclick="order('Pasta')">Order</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
+}
+
+
+function order(food){
+alert("Your " + food + " order has been placed!");
+}
+
+let hour = new Date().getHours();
+let status = document.getElementById("status");
+
+if(hour >= 10 && hour <= 22){
+status.innerText = "🟢 We are Open!";
+}
+else{
+status.innerText = "🔴 Sorry, we are Closed";
+}
+
+</script>
+
+</body>
+</html>
